@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baosight.bwhs.ma.my.mapper.RemunerationDetailMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.baosight.bwhs.ma.workstation.entity.SalaryPayslip">
+        <result column="GUID" property="guid" />
+        <result column="SALARY_CONFIG_ID" property="salaryConfigId" />
+        <result column="SALARY_PAYROLL_ID" property="salaryPayrollId" />
+        <result column="PAYSLIP_GROUP_ID" property="payslipGroupId" />
+        <result column="CALC_HRAREA_CODE" property="calcHrareaCode" />
+        <result column="ITEM_PROJECT_ID" property="itemProjectId" />
+        <result column="PAYMENT_AMOUNT" property="paymentAmount" />
+        <result column="FINANCE_ORG_CODE" property="financeOrgCode" />
+        <result column="POST_CODE" property="postCode" />
+        <result column="SALARY_SCALE" property="salaryScale" />
+        <result column="CALC_CURRENCY" property="calcCurrency" />
+        <result column="PAY_MODE" property="payMode" />
+        <result column="PAY_AMOUNT" property="payAmount" />
+        <result column="ACUTAL_AMOUNT" property="acutalAmount" />
+        <result column="TAX_AMOUNT" property="taxAmount" />
+        <result column="ACUTAL_TAX_AMOUNT" property="acutalTaxAmount" />
+        <result column="CALC_RESULT_LIST" property="calcResultList" />
+        <result column="SUBMIT_USER" property="submitUser" />
+        <result column="SUBMIT_TIME" property="submitTime" />
+        <result column="EXT1" property="ext1" />
+        <result column="EXT2" property="ext2" />
+        <result column="CREATE_USER" property="createUser" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="UPDATE_USER" property="updateUser" />
+        <result column="UPDATE_TIME" property="updateTime" />
+        <result column="DELETE_USER" property="deleteUser" />
+        <result column="DELETE_TIME" property="deleteTime" />
+        <result column="DELETE_FLAG" property="deleteFlag" />
+        <result column="EMP_CODE" property="empCode" />
+        <result column="EMP_NAME" property="empName" />
+        <result column="ORG_CODE" property="orgCode" />
+        <result column="ORG_PATH" property="orgPath" />
+        <result column="ORG_NAME" property="orgName" />
+        <result column="ORG_FULL_NAME" property="orgFullName" />
+        <result column="CACL_PERIOD" property="caclPeriod" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        GUID, SALARY_CONFIG_ID, SALARY_PAYROLL_ID, PAYSLIP_GROUP_ID, CALC_HRAREA_CODE, ITEM_PROJECT_ID, PAYMENT_AMOUNT, FINANCE_ORG_CODE, POST_CODE, SALARY_SCALE, CALC_CURRENCY, PAY_MODE, PAY_AMOUNT, ACUTAL_AMOUNT, TAX_AMOUNT, ACUTAL_TAX_AMOUNT, CALC_RESULT_LIST, SUBMIT_USER, SUBMIT_TIME, EXT1, EXT2, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME, DELETE_USER, DELETE_TIME, DELETE_FLAG, EMP_CODE, EMP_NAME, ORG_CODE, ORG_PATH, ORG_NAME, ORG_FULL_NAME, CACL_PERIOD
+    </sql>
+
+    <select id="queryRemuneration" parameterType="com.baosight.bwhs.ma.my.entity.PaySlipType"
+            resultType="com.baosight.bwhs.ma.workstation.entity.SalaryPayslip">
+        select
+        ps.CALC_RESULT_LIST,
+        ps.ACUTAL_AMOUNT
+        from
+        PB.T_PB_SALARY_PAYSLIP ps,
+        PB.T_PB_PAYSLIP_ITEM pi
+        where
+        pi.PAYSLIP_GROUP_ID = ps.PAYSLIP_GROUP_ID
+        and
+        pi.SET_TYPE = #{setType}
+        and
+        ps.EMP_CODE = #{empCode}
+        and
+        ps.CACL_PERIOD = #{caclPeriod}
+    </select>
+
+</mapper>

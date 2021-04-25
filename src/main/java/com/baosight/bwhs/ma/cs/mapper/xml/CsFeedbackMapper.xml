@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baosight.bwhs.ma.cs.mapper.CsFeedbackMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.baosight.bwhs.ma.cs.entity.CsFeedback">
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="CREATE_USER" property="createUser" />
+        <result column="CS_GUID" property="csGuid" />
+        <result column="DELETE_FLAG" property="deleteFlag" />
+        <result column="DELETE_TIME" property="deleteTime" />
+        <result column="DELETE_USER" property="deleteUser" />
+        <result column="EMP_CODE" property="empCode" />
+        <result column="FEEDBACK_CONTENT" property="feedbackContent" />
+        <result column="GUID" property="guid" />
+        <result column="UPDATE_TIME" property="updateTime" />
+        <result column="UPDATE_USER" property="updateUser" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        CREATE_TIME, CREATE_USER, CS_GUID, DELETE_FLAG, DELETE_TIME, DELETE_USER, EMP_CODE, FEEDBACK_CONTENT, GUID, UPDATE_TIME, UPDATE_USER
+    </sql>
+
+</mapper>

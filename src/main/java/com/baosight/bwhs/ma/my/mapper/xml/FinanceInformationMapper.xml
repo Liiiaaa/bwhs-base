@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baosight.bwhs.ma.my.mapper.FinanceInformationMapper">
+    <select id="queryFinanceOrgInformation" parameterType="String" resultType="com.baosight.bwhs.ma.my.entity.FinanceInformation">
+        SELECT
+            C.GUID ,
+            C.FINANCE_ORG_ID ,
+            C.CARD_NO ,
+            C.REBATE_TYPE,
+            F.FINANCE_ORG_NAME ,
+            F.FINANCE_ORG_TYPE
+        FROM
+            PB.T_PB_EMP_CARD C
+        LEFT JOIN PB.T_PB_FINANCE_ORG F ON
+            C.FINANCE_ORG_ID = F.GUID
+        WHERE
+            c.DELETE_FLAG = 0
+            AND F.DELETE_FLAG = 0
+            AND C.EMP_CODE = #{empCode}
+    </select>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.baosight.bwhs.ma.my.entity.FinanceInformation">
+        <result column="CREATE_USER" property="createUser" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="UPDATE_USER" property="updateUser" />
+        <result column="UPDATE_TIME" property="updateTime" />
+        <result column="DELETE_USER" property="deleteUser" />
+        <result column="DELETE_TIME" property="deleteTime" />
+        <result column="DELETE_FLAG" property="deleteFlag" />
+        <result column="ITEM_SEPARATOR" property="itemSeparator" />
+        <result column="LINE_SEPARATOR" property="lineSeparator" />
+        <result column="FILE_FORMAT" property="fileFormat" />
+        <result column="EXT1" property="ext1" />
+        <result column="EXT2" property="ext2" />
+        <result column="EXT3" property="ext3" />
+        <result column="ORG_CODE" property="orgCode" />
+        <result column="CALC_HRAREA_CODE" property="calcHrareaCode" />
+        <result column="GUID" property="guid" />
+        <result column="FINANCE_ORG_NAME" property="financeOrgName" />
+        <result column="FINANCE_ORG_TYPE" property="financeOrgType" />
+        <result column="PAY_METHOD_TYPE" property="payMethodType" />
+        <result column="FINANCE_ORG_ACCOUNT" property="financeOrgAccount" />
+        <result column="PROVINCE" property="province" />
+        <result column="CITY" property="city" />
+        <result column="ADDRESS" property="address" />
+        <result column="LINKMAN" property="linkman" />
+        <result column="TEL" property="tel" />
+        <result column="TAEL_FLAG" property="taelFlag" />
+        <result column="REBATE_FLAG" property="rebateFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        CREATE_USER,
+        CREATE_TIME,
+        UPDATE_USER,
+        UPDATE_TIME,
+        DELETE_USER,
+        DELETE_TIME,
+        DELETE_FLAG,
+        ITEM_SEPARATOR, LINE_SEPARATOR, FILE_FORMAT, EXT1, EXT2, EXT3, ORG_CODE, CALC_HRAREA_CODE, GUID, FINANCE_ORG_NAME, FINANCE_ORG_TYPE, PAY_METHOD_TYPE, FINANCE_ORG_ACCOUNT, PROVINCE, CITY, ADDRESS, LINKMAN, TEL, TAEL_FLAG, REBATE_FLAG
+    </sql>
+
+</mapper>

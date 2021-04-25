@@ -1,0 +1,16 @@
+package com.baosight.bwhs.ma.cs.mapper;
+
+import com.baosight.bwhs.ma.cs.entity.CsFeedback;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+/**
+ * <p>
+ * 客户服务反馈表 Mapper 接口
+ * </p>
+ *
+ * @author moyu
+ * @since 2021-04-16
+ */
+public interface CsFeedbackMapper extends BaseMapper<CsFeedback> {
+
+}
